@@ -35,6 +35,14 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 커스텀_구분_적용_테스트(){
+        assertSimpleTest(() -> {
+            run("//.\\n10.12.14");
+            assertThat(output()).contains("결과 : 36");
+        });
+    }
+
+    @Test
     void 커스텀_구분자_사용() {
         assertSimpleTest(() -> {
             run("//;\\n1");
