@@ -18,6 +18,23 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 음수가_들어오는_경우_테스트(){
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("-5,3"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void int를_넘어간_경우_테스트(){
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("-10000000000000000000,3"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+
+    }
+
+    @Test
     void 커스텀_구분자_사용() {
         assertSimpleTest(() -> {
             run("//;\\n1");
