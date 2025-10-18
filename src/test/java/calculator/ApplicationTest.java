@@ -8,6 +8,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
+
+    @Test
+    void 숫자합_테스트(){
+        assertSimpleTest(() -> {
+            run("12:13:14");
+            assertThat(output().contains("결과 : 39"));
+        });
+    }
+
     @Test
     void 커스텀_구분자_사용() {
         assertSimpleTest(() -> {
