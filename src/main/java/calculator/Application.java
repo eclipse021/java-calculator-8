@@ -23,6 +23,15 @@ class Calculator {
         // 입력 받기
         String input = Console.readLine();
 
+        int startIndex = 0;
+
+        // 커스텀 지정자를 사용하는 경우 케이스 분리
+        if(input.startsWith("//") && input.indexOf("\\n") == 3){ // 문자열 안에서 \n을 표현하고 싶은 경우 앞에 \ 추가하기
+            operators.add(input.charAt(2));
+
+            startIndex = 5;
+        }
+
         // 구분자 사이 저장할 숫자
         String stored = "";
 
@@ -30,7 +39,7 @@ class Calculator {
         int sum = 0;
 
 
-        for(int i = 0; i < input.length(); i++) {
+        for(int i = startIndex; i < input.length(); i++) {
 
             if(operators.contains(input.charAt(i))) {
                 int value = parseNumber(stored);
