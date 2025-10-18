@@ -27,6 +27,11 @@ class Calculator {
 
         // 커스텀 지정자를 사용하는 경우 케이스 분리
         if(input.startsWith("//") && input.indexOf("\\n") == 3){ // 문자열 안에서 \n을 표현하고 싶은 경우 앞에 \ 추가하기
+
+            if (Character.isDigit(input.charAt(2))) {
+                throw new IllegalArgumentException("숫자는 구분자로 사용할 수 없습니다.");
+            }
+
             operators.add(input.charAt(2));
 
             startIndex = 5;
