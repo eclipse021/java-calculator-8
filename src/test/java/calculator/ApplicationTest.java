@@ -35,6 +35,14 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 커스텀_구분자에_숫자를_넣은_경우_테스트(){
+        assertSimpleTest(() -> {
+            assertThatThrownBy(() -> runException("//9\\n10:12:14"))
+                    .isInstanceOf(IllegalArgumentException.class);
+        });
+    }
+
+    @Test
     void 커스텀_구분_적용_테스트(){
         assertSimpleTest(() -> {
             run("//.\\n10.12.14");
