@@ -3,6 +3,7 @@ package calculator.domain.calculator.factory;
 import calculator.domain.calculator.model.Delimiter;
 import calculator.domain.calculator.model.dto.Input;
 import calculator.domain.calculator.model.policy.ParsingPolicy;
+import calculator.exception.ErrorMessage;
 
 public class CalculatorFactory {
 
@@ -29,7 +30,7 @@ public class CalculatorFactory {
 
             // 숫자는 구분자로 사용할 수 없음
             if (Character.isDigit(raw.charAt(2))) {
-                throw new IllegalArgumentException("숫자는 구분자로 사용할 수 없습니다.");
+                throw new IllegalArgumentException(ErrorMessage.INVALID_DELIMITER);
             }
 
             // 기본 구분자(, :)에 커스텀 구분자 추가
